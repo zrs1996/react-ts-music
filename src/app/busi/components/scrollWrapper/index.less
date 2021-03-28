@@ -1,0 +1,27 @@
+.scroll_wrapper {
+    display: flex;
+    flex-direction: column;
+    padding: 0 15px;
+    .scroll_wrapper_header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: #7b7c7d;
+        height: 40px;
+        .scroll_wrapper_title {
+            font-size: 14px;
+        }
+        .scroll_wrapper_button {
+            height: 20px;
+            width: max-content;
+            padding: 0 5px;
+            border-radius: 10px;
+            border: 1px solid #2b2c2e;
+            font-size: 12px;
+        }
+    }
+    .scroll_wrapper_content {
+        display: flex;
+        overflow: auto;
+    }
+}

@@ -1,0 +1,30 @@
+{
+    "compilerOptions": {
+        "module": "esnext",
+        "target": "es2015",
+        "lib": [
+            "es6",
+            "dom"
+        ],
+        "sourceMap": true,
+        "jsx": "react",
+        "noImplicitAny": true,
+        "allowJs": true,
+        "moduleResolution": "node",
+        "allowSyntheticDefaultImports": true,
+        "baseUrl": ".",
+        "paths": {
+            "*": [
+                "*",
+                "src/*",
+                "src/app/*"
+            ]
+          }
+    },
+    "include": [
+        "src/*",
+    ],
+    "exclude": [
+        "node_modules"
+    ]
+}

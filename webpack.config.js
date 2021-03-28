@@ -1,17 +1,18 @@
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const webpack = require('webpack'); // 用于访问内置插件
+const path = require('path')
+const webpack = require('webpack')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 module.exports = {
-    entry: './src/app/index.jsx',
+    entry: './src/index.tsx',
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: 'bundle.js'
     },
     devServer: {
-        host: '127.0.0.1', //地址
-        hot: true, //自动更新
-        port: 8088, // 端口号
+        host: '127.0.0.1',
+        hot: true,
+        port: 8088,
         inline: true,
     },
     mode: 'development',
@@ -19,7 +20,7 @@ module.exports = {
         rules: [
             {
                 test: /\.css$/,
-                use: ['style-loader', 'css-loader']
+                use: ['style-loader', 'css-loader', MiniCssExtractPlugin.loader]
             },
             {
                 test: /\.less$/,
@@ -32,24 +33,37 @@ module.exports = {
                 loader: 'babel-loader',
             },
             {
+                test: /\.tsx?$/,
+                include: path.resolve(__dirname, 'src'),
+                loader: 'ts-loader',
+                exclude: /node_modules/
+            },
+            {
                 test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
                 loader: 'url-loader',
                 options: {
-                    limit: 10000
+                    esModule:false,
+                    limit: 10000,
+                    name:'[hash:10].[ext]'
                 }
             },
+            // {
+            //     //处理html中的img
+            //     test: /\.html$/,
+            //     loader:'html-loader'
+            // }
         ]
     },
     resolve: {
         alias: {
-            "src": path.resolve("src"),
-            "app": path.resolve("src/app"),
+            app: path.resolve(__dirname, 'src/app/'),
         },
-        extensions: ['.js', '.jsx']
+        extensions: ['.ts', '.js', '.tsx', '.jsx']
     },
     devtool: 'source-map',
     plugins: [
         new HtmlWebpackPlugin({ template: './index.html' }),
-        new webpack.HotModuleReplacementPlugin()
+        new webpack.HotModuleReplacementPlugin(),
+        new MiniCssExtractPlugin()
     ]
 }

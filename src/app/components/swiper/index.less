@@ -1,0 +1,28 @@
+.com_swiper {
+    display: flex;
+    overflow: hidden;
+    padding: 0 15px;
+    height: 200px;
+    .com_swiper_ul {
+        display: flex;
+        overflow-x: auto;
+    }
+    .com_swiper_li {
+        overflow: hidden;
+        border-radius: 10px;
+        min-width: 100%;
+        max-width: 100%;
+        height: 100%;
+        &:not(:last-child) {
+            margin-right: 30px;
+        }
+    }
+    .com_swiper_li_img {
+        width: 100%;
+        height: 100%;
+        img {
+            width: 100%;
+            height: 100%;
+        }
+    }
+}

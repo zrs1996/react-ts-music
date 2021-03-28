@@ -1,6 +1,9 @@
 import React from 'react';
 
-const Entry = (props) => {
+interface props {
+    children: React.ReactElement
+}
+const Entry = (props: props) => {
     const { children } = props;
     return <div id='entry'>{children}</div>
 };
