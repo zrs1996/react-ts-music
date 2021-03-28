@@ -1,16 +1,21 @@
 import React, { useEffect, useState } from 'react'
-import { query } from 'app/axios'
+import axios from 'app/axios'
 
 const Header = () => {
     const [keyword, setKeyword] = useState('');
 
     useEffect(() => {
         const url = `http://localhost:3000/search/default`;
-        query(url).then(res => {
-            console.log(res)
-            if (res.code === 200) {
+        axios({
+            url,
+            method: 'get',
+            data: {},
+            success: (res: any) => {
                 const data = res.data;
                 setKeyword(data.showKeyword);
+            },
+            error: (res: any) => {
+                console.log(res, 'error');
             }
         })
     }, []);

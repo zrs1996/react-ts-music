@@ -1,13 +1,21 @@
 import React, { useEffect, useState } from 'react'
-import { query } from 'app/axios'
+import axios from 'app/axios'
 
 const Tool = () => {
     const [iconList, setIconList] = useState([])
 
     useEffect(() => {
         const url = 'http://localhost:3000/homepage/dragon/ball'
-        query(url).then(res => {
-            setIconList(res.data)
+        axios({
+            url,
+            method: 'get',
+            data: {},
+            success: (res: any) => {
+                setIconList(res.data)
+            },
+            error: (res: any) => {
+                console.log(res, 'error');
+            }
         })
     }, []);
 
