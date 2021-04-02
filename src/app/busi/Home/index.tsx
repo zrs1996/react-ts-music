@@ -54,7 +54,7 @@ const Home = () => {
         <Card style={null}>
             <Header />
             <Swiper
-                autoPlay={false}
+                autoPlay={true}
                 bannerList={homeData.HOMEPAGE_BANNER?.extInfo?.banners || []} />
             <Tool />
         </Card>

@@ -1,14 +1,3 @@
-// interface info {
-
-// }
-// export const query = (info) => {
-//     return fetch(info).then(data => {
-//         return data.json()
-//     }).then(res => {
-//         return res
-//     })
-// }
-
 interface Axios {
     method: string
     url: string
@@ -18,10 +7,9 @@ interface Axios {
     header?: {
         [key: string]: string
     }
-    success(data: string): void
-    error(data: string): void
+    success: (data: string) => void
+    error?: (data: string) => void
     actionType?: false //是否异步
-
 }
 
 const defaultOptions = {
@@ -40,12 +28,14 @@ const setParams = (data: Axios['data']) => {
     let str = ''
     let i = 0
     let keysArray = Object.keys(data)
-    while (Object.keys(data).length > i) {
+    while (keysArray.length > i) {
         let attr = keysArray[i]
         str += attr + '=' + data[attr] + '&'
     }
+    str.slice(0, str.length - 1) //delete last char that called &
     return str
 }
+
 const axios = (info: Axios) => {
     const xhr = new XMLHttpRequest()
     Object.assign(defaultOptions, info)
