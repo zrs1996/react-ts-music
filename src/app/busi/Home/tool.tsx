@@ -5,7 +5,7 @@ const Tool = () => {
     const [iconList, setIconList] = useState([])
 
     useEffect(() => {
-        const url = 'http://localhost:3000/homepage/dragon/ball'
+        const url = 'http://127.0.0.1:3000/homepage/dragon/ball'
         axios({
             url,
             method: 'get',

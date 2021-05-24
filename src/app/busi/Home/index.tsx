@@ -16,7 +16,7 @@ const Home = () => {
     const [homeData, setHomeData] = useState<Type.homeData>({})
 
     useEffect(() => {
-        const url = `http://localhost:3000/homepage/block/page`
+        const url = `http://127.0.0.1:3000/homepage/block/page`
         axios({
             url,
             method: 'get',
